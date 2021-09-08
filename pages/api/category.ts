@@ -13,6 +13,7 @@ interface Data {
   create_time: string
   order_createtime_hidden: string
   mobile_hidden: string
+  pid: string
 }
 
 interface ServerError {
@@ -21,6 +22,9 @@ interface ServerError {
   error?: unknown
 }
 
+// 排除
+const exclude: string[] = ['1', '21', '33', '31']
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data[] | ServerError>
@@ -28,7 +32,11 @@ export default async function handler(
   axios.get(url).then(response => {
     const { errno, errmsg, data } = response.data
     if (errno === '0') {
-      res.status(200).json(Object.values(data))
+      res.status(200).json(
+        (Object.values(data) as Data[])
+          .filter(item => !exclude.includes(item.id))
+          .sort((a, b) => Number(a.order_num) - Number(b.order_num))
+      )
     } else {
       res.status(500).json({
         message: errmsg,

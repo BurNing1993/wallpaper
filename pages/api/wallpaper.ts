@@ -5,14 +5,23 @@ import axios from 'axios'
 const url = 'http://wallpaper.apc.360.cn/index.php'
 
 interface Data {
-  id: string
-  pjt: string
-  name: string
-  order_num: string
-  tag: string
-  create_time: string
-  order_createtime_hidden: string
-  mobile_hidden: string
+  id: string,
+  class_id: string,
+  resolution: string,
+  url: string,
+  url_thumb: string,
+  url_mid: string,
+  download_times: string,
+  tag: string,
+  create_time: string,
+  update_time: string,
+  utag: string,
+  img_1600_900: string,
+  img_1440_900: string,
+  img_1366_768: string,
+  img_1280_800: string,
+  img_1280_1024: string,
+  img_1024_768: string,
 }
 
 interface ServerError {
@@ -24,6 +33,7 @@ interface ServerError {
 const defaultParams = {
   c: 'WallPaper',
   a: 'getAppsByCategory',
+  count : 24
   // cid : 26
   // start : 0
 }

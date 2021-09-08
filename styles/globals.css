@@ -1,5 +1,12 @@
-@import '~antd/dist/antd.css';
-
 /* ./styles/global.css */
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-black text-white text-center font-sans text-sm lg:text-base;
+}
+
+img {
+  display: inline;
+}

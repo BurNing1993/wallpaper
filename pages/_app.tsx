@@ -7,12 +7,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Wallpaper</title>
-        <meta name="description" content="Wallpaper" />
+        <title>壁纸🎆</title>
+        <meta name="description" content="壁纸🎆" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main>
+      <main className="mt-12">
         <Component {...pageProps} />
       </main>
     </>
